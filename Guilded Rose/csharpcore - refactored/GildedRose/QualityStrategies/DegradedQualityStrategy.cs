@@ -1,13 +1,13 @@
 ﻿using System;
 
-namespace GildedRoseKata
+namespace GildedRoseKata.QualityStrategies
 {
     internal class DegradedQualityStrategy : IQualityStrategy
     {
         private static int _increaseFactor;
 
-        public DegradedQualityStrategy(int increaseFactor = 1) 
-        { 
+        public DegradedQualityStrategy(int increaseFactor = 1)
+        {
             _increaseFactor = increaseFactor;
         }
 

@@ -1,4 +1,6 @@
-﻿namespace GildedRoseKata
+﻿using GildedRoseKata.QualityStrategies;
+
+namespace GildedRoseKata
 {
     public interface IQualityStrategyFactory
     {

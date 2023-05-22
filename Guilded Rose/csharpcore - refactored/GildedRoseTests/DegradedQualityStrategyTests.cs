@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using GildedRoseKata;
+using GildedRoseKata.QualityStrategies;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Xunit;

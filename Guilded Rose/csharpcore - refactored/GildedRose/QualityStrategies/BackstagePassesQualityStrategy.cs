@@ -2,7 +2,7 @@
 using System.Diagnostics.Metrics;
 using System.Linq.Expressions;
 
-namespace GildedRoseKata
+namespace GildedRoseKata.QualityStrategies
 {
     internal class BackstagePassesQualityStrategy : IQualityStrategy
     {
@@ -12,7 +12,7 @@ namespace GildedRoseKata
 
         public void UpdateItemQuality(Item item)
         {
-            if (AfterConcert(item)) 
+            if (AfterConcert(item))
                 item.Quality = 0;
             else if (FiveDaysToConcert(item))
                 item.Quality = Math.Min(item.Quality + 3, MaxQuality);
@@ -24,7 +24,7 @@ namespace GildedRoseKata
 
         private static bool AfterConcert(Item item) => item.SellIn <= 0;
 
-        private static bool FiveDaysToConcert(Item item) => 
+        private static bool FiveDaysToConcert(Item item) =>
             item.SellIn <= 5 && item.SellIn > 0;
 
         private static bool SixToTenDaysUntilConcert(Item item) =>

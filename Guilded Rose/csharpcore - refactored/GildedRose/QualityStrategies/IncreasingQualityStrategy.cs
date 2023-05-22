@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GildedRoseKata
+namespace GildedRoseKata.QualityStrategies
 {
     internal class IncreasingQualityStrategy : IQualityStrategy
     {
