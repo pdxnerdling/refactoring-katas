@@ -1,7 +1,6 @@
 ﻿using Xunit;
 using System.Collections.Generic;
 using GildedRoseKata;
-using System.Linq;
 using FluentAssertions;
 
 namespace GildedRoseTests
@@ -73,6 +72,29 @@ namespace GildedRoseTests
         }
 
         [Fact]
+        public void ConjuredItemsQuality_DegradeByTwo_WhenNotExpired()
+        {
+            var quality = 4;
+            var item = new Item { Name = "Conjured Mana Cake", SellIn = 30, Quality = quality };
+            var app = new GildedRose(new List<Item> { item });
+
+            app.UpdateQuality();
+            item.Quality.Should().Be(quality - 2);
+        }
+
+        [Fact]
+        public void ConjuredItemsQuality_DegradeByFour_WhenExpired()
+        {
+            var quality = 5;
+            var item = new Item { Name = "Conjured Mana Cake", SellIn = 0, Quality = quality };
+            var app = new GildedRose(new List<Item> { item });
+
+            app.UpdateQuality();
+            item.Quality.Should().Be(quality - 4);
+
+        }
+
+        [Fact]
         public void AgedBrieQuality_IncreasesByOne()
         {
             var quality = 5;
@@ -81,6 +103,17 @@ namespace GildedRoseTests
 
             app.UpdateQuality();
             item.Quality.Should().Be(quality + 1);
+        }
+
+        [Fact]
+        public void AgedBrieQuality_IncreasesByTwo_WhenExpired()
+        {
+            var quality = 5;
+            var item = new Item { Name = "Aged Brie", SellIn = -1, Quality = quality };
+            var app = new GildedRose(new List<Item> { item });
+
+            app.UpdateQuality();
+            item.Quality.Should().Be(quality + 2);
         }
 
         [Theory]
